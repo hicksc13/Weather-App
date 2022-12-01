@@ -11,8 +11,8 @@ response = requests.get(request_url)
 if response.status_code == 200:
     data = response.json()
     weather = data['weather'][0]['description']
-    temperaturek = round(data["main"]["temp"] - 273.15, 2)
-    temperature = round(temperaturek*1.8+32, 2)
+    temperature_kelvin = round(data["main"]["temp"] - 273.15, 2)
+    temperature = round(temperature_kelvin*1.8+32, 2)
 
     print("Weather:", weather)
     print("Temperature:",temperature, "Fahrenheit")
