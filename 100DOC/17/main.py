@@ -1,26 +1,41 @@
-from question_model import Question
-from data import question_data
-from quiz_brain import QuizBrain
+#deploying a self made class. self is refering to this class and the ".X" is the attrinutes so self.id is setting the "id" for the "user class"
+        # if you put it into the paramaters then you HAVE to have it defined later on. you can also set the defualt values just like the self.followers = 0 
+        # Can put 'pass' after class user: if you dont want to define everything so far. 
+
+class User:
+    def __init__(self, user_id,username): 
+        self.id = user_id
+        self.username = username
+        self.followers = 0
+        self.following = 0 
+
+    def follow(self, user):
+        user.followers += 1
+        self.following += 1
 
 
-question_bank = []
+
+class Car:
+    def enter_race_mode():
+        self.seats = 2
+
+#variable = class(paramerters, paramaters)
+user_1 = User("001", "cody")
+user_2 = User("002", "jack")
 
 
-for question in question_data:
-    question_text = question["question"]
-    question_answer = question["correct_answer"]
-    new_question = Question(question_text, question_answer)
-    question_bank.append(new_question)
+
+#object.methond(paramerters)
+user_1.follow(user_2)
+user_2.follow(user_1)
+
+print(user_1.followers)
+print(user_1.following)
+print(user_2.followers)
+print(user_2.following)
 
 
-quiz = QuizBrain(question_bank)
 
-
-while quiz.still_has_questions():
-    quiz.next_question()
-
-print("You have completed the quiz!")
-print(f"Your Final score was:{quiz.score}/{quiz.question_number}")
 
 
 
