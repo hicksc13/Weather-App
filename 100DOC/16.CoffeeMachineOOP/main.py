@@ -1,3 +1,6 @@
+import os
+os.chdir("C:\\Users\\Owner\\Documents\\GitHub\\GitProjects\\100DOC\\16")
+
 #import turtle
 #timmy = turtle.Turtle()
 
