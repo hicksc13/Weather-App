@@ -6,6 +6,7 @@ API_KEY = "83536a95d4dd86b3883578912f0f2d0f"
 BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
 
 def search():
+    
     city_name = entry_1.get()
     if not city_name:
         text_1.delete(1.0, tkinter.END)
@@ -23,8 +24,6 @@ def search():
     else:
         params["units"] = "metric"
         
-
-
     response = requests.get(BASE_URL, params=params)
     data = response.json()
 
@@ -49,9 +48,6 @@ def search():
     text_1.insert(tkinter.END, f"\nPressure: {data['main']['pressure']} hpa")
     text_1.insert(tkinter.END, f"\nVisibility: {data['visibility']} meters")
 
-customtkinter.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
-customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
-
 app = customtkinter.CTk()
 app.geometry("500x880")
 app.title("Weather Look-up")
@@ -70,8 +66,13 @@ entry_1.pack(pady=10, padx=10)
 
 optionmenu_1 = customtkinter.CTkOptionMenu(frame_1, values=["F", "C"])
 optionmenu_1.pack(pady=10, padx=10)
-optionmenu_1.set("F")
+
 text_1 = customtkinter.CTkTextbox(master=frame_1, width=450, height=300)
 text_1.pack(pady=10, padx=10)
+
+### Default Settings ###
+customtkinter.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
+customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
+optionmenu_1.set("F")
 
 app.mainloop()
