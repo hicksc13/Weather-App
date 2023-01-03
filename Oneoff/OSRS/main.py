@@ -23,9 +23,12 @@ class MyGui:
         self.sub_btn=tk.Button(self.root,text = 'Submit', command = self.search_name)
         self.sub_btn.pack()
 
-        self.text_box = tk.Text(self.root, width = 50, height = 25)
+        self.text_box = tk.Text(self.root, width=700, height=700, font=('Arial', 20))
         self.text_box.pack()
         
+        self.bxc = tk.Label(self.root, width=700, height=700, font=('Arial', 20))
+
+
 
         self.root.mainloop()
 
@@ -34,10 +37,21 @@ class MyGui:
 
         name_entered = self.name_var.get()
         input_player = Hiscores(name_entered)
-        #need to figure out how to display the hiscores info. Stuck at it giving me errors about the type. 
-        return input_player.skills
-        print(type(input_player))
-        print(input_player)
+        self.text_box.delete('1.0', tk.END)
+        self.text_box.tag_configure('bold', font=('Courier', 12, 'bold'))
+        for skill, level in input_player.skills.items():
+            self.text_box.insert(tk.END, f'{skill}: {level}\n')
+        return input_player
+
+
+
+
+
+
+
+
+
+
 
 MyGui()
 
